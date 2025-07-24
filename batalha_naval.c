@@ -42,21 +42,21 @@ int main() {
     };
 
     printf("\n\nArea de Efeito das abilidades:\n");
-    printf("\nOctaedro:");
+    printf("\n1. Octaedro:");
     for (int i = 0; i < 5; i++) {
         printf("\n");
         for (int j = 0; j < 5; j++) {
             printf("%d ", octaedro[i][j]); // Imprime a area de efeito do octaedro//
         }
     }
-    printf("\n\nCruz:");
+    printf("\n\n2. Cruz:");
     for (int i = 0; i < 5; i++) {
         printf("\n");
         for (int j = 0; j < 5; j++) {
             printf("%d ", cruz[i][j]); // Imprime a area de efeito da cruz//
         }
     }
-    printf("\n\nCone:");
+    printf("\n\n3. Cone:");
     for (int i = 0; i < 5; i++) {
         printf("\n");
         for (int j = 0; j < 5; j++) {
@@ -64,5 +64,71 @@ int main() {
         }
     }
     
+    int choice;
+    printf("\n\nEscolha uma habilidade : ");
+    scanf("%d", &choice);
+
+    switch (choice) {
+        case 1:
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    tabuleiro[i + 2][j + 2] += octaedro[i][j]; // Aplica a habilidade octaedro no tabuleiro//
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tabuleiro[i][j] == 1 || tabuleiro[i][j] == 4) {
+                        tabuleiro[i][j] = 5; // Marca os acertos com 5//
+                    }
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                printf("\n");
+                for (int j = 0; j < 10; j++) {
+                    printf("%d ", tabuleiro[i][j]); // Imprime o tabuleiro atualizado//
+                }
+            }
+            break;
+        case 2:
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    tabuleiro[i + 2][j + 2] += cruz[i][j]; // Aplica a habilidade cruz no tabuleiro//
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tabuleiro[i][j] == 1 || tabuleiro[i][j] == 4) {
+                        tabuleiro[i][j] = 5; // Marca os acertos com 5//
+                    }
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                printf("\n");
+                for (int j = 0; j < 10; j++) {
+                    printf("%d ", tabuleiro[i][j]); // Imprime o tabuleiro atualizado//
+                }
+            }
+            break;
+        case 3:
+            for (int i = 0; i < 5; i++) {
+                for (int j = 0; j < 5; j++) {
+                    tabuleiro[i][j + 2] += cone[i][j]; // Aplica a habilidade cone no tabuleiro//
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if (tabuleiro[i][j] == 1 || tabuleiro[i][j] == 4) {
+                        tabuleiro[i][j] = 5; // Marca os acertos com 5//
+                    }
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                printf("\n");
+                for (int j = 0; j < 10; j++) {
+                    printf("%d ", tabuleiro[i][j]); // Imprime o tabuleiro atualizado//
+                }
+            }
+            break;
+    }
     return 0;
 }
